@@ -1,0 +1,61 @@
+# Python生成的文件
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 虚拟环境
+venv/
+ENV/
+.env
+.venv
+env/
+env.bak/
+venv.bak/
+
+# 输出文件
+output/*.json
+
+# 日志文件
+*.log
+
+# 测试文件
+.coverage
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+.pytest_cache/
+nosetests.xml
+coverage.xml
+
+# IDE相关文件
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# 个人设置文件
+*.ini
+config.json
+credentials.json
+
+# 摘要文件
+summary.txt 
