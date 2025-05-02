@@ -29,6 +29,21 @@ cd wihd
 pip install -r requirements.txt  # 未来可能会添加
 ```
 
+3. 配置zsh历史记录（**重要**）：
+   
+   为了确保zsh历史记录包含时间戳并能被正确解析，请在`~/.zprofile`文件中添加以下配置：
+   
+   ```bash
+   # 历史记录设置
+   HISTSIZE=1000000
+   SAVEHIST=1000000
+   setopt EXTENDED_HISTORY
+   setopt SHARE_HISTORY        # 共享历史记录
+   setopt INC_APPEND_HISTORY   # 增量添加历史记录
+   ```
+   
+   然后重启终端或运行`source ~/.zprofile`使配置生效。
+
 ## 使用方法
 
 ### 基本用法
