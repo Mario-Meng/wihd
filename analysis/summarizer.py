@@ -145,7 +145,7 @@ def create_llm_prompt(activity_records):
         title = record.get("title", "")
         
         if activity_type in ["safari", "chrome"] and title:
-            prompt += f"{timestamp} [{activity_type}] {title} - {content[:50]}...\n"
+            prompt += f"{timestamp} [{activity_type}] {title} - {content[:100]}...\n"
         else:
             prompt += f"{timestamp} [{activity_type}] {content[:100]}...\n"
     

@@ -135,10 +135,13 @@ def parse_chrome_profile_history(chrome_db_path, start_date, end_date, profile_n
             # 解析时间字符串为datetime对象
             visit_date = datetime.strptime(visit_date_str, "%Y-%m-%d %H:%M:%S")
             
+            # 截取URL前100个字符
+            truncated_url = url[:100] if url else url
+            
             activity = Activity(
                 timestamp=visit_date,
                 activity_type=ActivityType.CHROME,
-                content=url,
+                content=truncated_url,
                 source=f"chrome_history_{profile_name}",
                 title=title,
                 metadata={"profile": profile_name}
@@ -176,7 +179,7 @@ def test_parse_chrome_history():
     for profile, acts in profiles.items():
         print(f"\n配置文件 '{profile}' 中有 {len(acts)} 条记录:")
         for idx, activity in enumerate(acts[:5], 1):  # 只显示前5条
-            print(f"{idx}. [{activity.timestamp.strftime('%H:%M:%S')}] {activity.title or '无标题'} - {activity.content[:50]}{'...' if len(activity.content) > 50 else ''}")
+            print(f"{idx}. [{activity.timestamp.strftime('%H:%M:%S')}] {activity.title or '无标题'} - {activity.content}")
         
         if len(acts) > 5:
             print(f"... 以及其他 {len(acts) - 5} 条记录")

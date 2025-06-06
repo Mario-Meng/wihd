@@ -68,10 +68,13 @@ def parse_safari_history(target_date):
             # 解析时间字符串为datetime对象
             visit_date = datetime.strptime(visit_date_str, "%Y-%m-%d %H:%M:%S")
             
+            # 截取URL前100个字符
+            truncated_url = url[:100] if url else url
+            
             activity = Activity(
                 timestamp=visit_date,
                 activity_type=ActivityType.SAFARI,
-                content=url,
+                content=truncated_url,
                 source="safari_history",
                 title=title
             )
@@ -97,7 +100,7 @@ def test_parse_safari_history():
     
     print(f"今天找到 {len(activities)} 条Safari浏览记录:")
     for idx, activity in enumerate(activities[:10], 1):  # 只显示前10条
-        print(f"{idx}. [{activity.timestamp.strftime('%H:%M:%S')}] {activity.title or '无标题'} - {activity.content[:50]}{'...' if len(activity.content) > 50 else ''}")
+        print(f"{idx}. [{activity.timestamp.strftime('%H:%M:%S')}] {activity.title or '无标题'} - {activity.content}")
     
     if len(activities) > 10:
         print(f"... 以及其他 {len(activities) - 10} 条记录")
